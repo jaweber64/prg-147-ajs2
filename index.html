@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Angular JS - Mowing Estimator (version 2)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body ng-app="MowApp">
+<div class="w3-container w3-section w3-border w3-round-xlarge w3-border-green" id="outer">
+    <header class="w3-panel w3-text-indigo" id="head">
+        <h1>Forms using Angular JS</h1>
+        <h4>(Version 2)</h4>
+    </header>
+
+    <div class="w3-container w3-section w3-border w3-round-xlarge w3-border-green" id="mowform">
+        <h3> Mowing Cost Estimator </h3>
+
+        <!--calculate square footage of all yards, assume 10 cents per square foot -->
+        <p style="text-align: center">Please enter the values below (in feet). The total area and cost will display.</p>
+
+        <div ng-controller="MainController" ng-init="fyl=0; fyw=0; rsyl=0; rsyw=0; lsyl=0; lsyw=0; byl=0; byw=0;">
+            <p class="phead">Front Yard</p>
+            <span>Length: </span>
+            <input type="text" ng-model="fyl" >
+            <span>Width: </span>
+            <input type="text" ng-model="fyw" >
+            <br>
+
+            <p class="phead">Right Side Yard</p>
+            <span>Length: </span>
+            <input type="text" ng-model="rsyl" >
+            <span>Width: </span>
+            <input type="text" ng-model="rsyw" >
+            <br>
+
+            <p class="phead">Left Side Yard</p>
+            <span>Length: </span>
+            <input type="text" ng-model="lsyl" >
+            <span>Width: </span>
+            <input type="text" ng-model="lsyw" >
+            <br>
+
+            <p class="phead">Back Yard</p>
+            <span>Length: </span>
+            <input type="text" ng-model="byl" >
+            <span>Width: </span>
+            <input type="text" ng-model="byw" >
+            <br>
+
+            <p>&nbsp;</p>
+            <p>The square footage of the yard is => {{ (fyl*fyw)+(rsyl*rsyw)+(lsyl*lsyw)+(byl*byw) }} </p>
+            <p>The total cost (@10 cents/yard) => {{ ((fyl*fyw)+(rsyl*rsyw)+(lsyl*lsyw)+(byl*byw)) * .1 | currency}}</p>
+        </div>
+
+        <div>&nbsp;</div>
+        <a href="../angular-js/index.html">Click here to return to the original version!</a>
+        <div>&nbsp;</div>
+    </div>
+
+    <footer>
+        <div class="w3-row w3-round-xlarge">
+            <div class="w3-half left-footer">
+                <p>&copy Janet Weber <br>
+                    Images Courtesy of <a href="https://pixabay.com/">Pixabay</a></p>
+            </div>
+            <div class="w3-half right-footer">
+                <p>PRG-147 Fall 2016 <br>
+                    Learn Angular JS</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    var app = angular.module('MowApp', []);
+    app.controller('MainController', function ($scope) {
+    });
+</script>
+
+</body>
+</html>
